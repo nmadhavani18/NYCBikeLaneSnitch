@@ -35,7 +35,8 @@ export class RdsStack extends cdk.Stack {
             databaseName: 'appdb',
             maxAllocatedStorage: 20, // Maximum storage in GB
             allocatedStorage: 20,    // Initial storage in GB
-            backupRetention: Duration.days(0)
+            deleteAutomatedBackups: true,
+            backupRetention: Duration.days(0) // so we dont get charged for backups, should probably remove this after launch so we have db backups
         });
     }
 }
