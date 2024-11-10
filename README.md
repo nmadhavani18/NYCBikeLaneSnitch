@@ -2,7 +2,7 @@
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
-Before using this you need to setup aws cli and cdk for your command line
+Before using this you need to set up `aws cli` and `aws cdk` for your command line
 
 ## Useful commands
 
