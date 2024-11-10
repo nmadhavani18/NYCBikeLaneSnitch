@@ -1,4 +1,3 @@
-// lib/vpc-stack.ts
 import * as cdk from 'aws-cdk-lib';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import { Construct } from 'constructs';

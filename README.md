@@ -12,4 +12,5 @@ Before using this you need to set up `aws cli` and `aws cdk` for your command li
 
 
 * `cdk ls` - lists the stacks 
+* `cdk diff` - what changed
 * `cdk deploy --all` - deploys everything
