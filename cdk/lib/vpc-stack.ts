@@ -8,7 +8,7 @@ export class VpcStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
     const natProvider = ec2.NatProvider.instanceV2({
-      instanceType: ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
+      instanceType: ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.MICRO),
       defaultAllowedTraffic: ec2.NatTrafficDirection.INBOUND_AND_OUTBOUND,
     });
 

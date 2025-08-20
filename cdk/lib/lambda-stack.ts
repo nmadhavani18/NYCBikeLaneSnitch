@@ -25,10 +25,10 @@ export class LambdaStack extends cdk.Stack {
       allowAllOutbound: true,
     });
 
-    // Create Lambda function using NodejsFunction construct
+    // Create Lambda function using NodejsFunction construct for TypeScript support
     this.handler = new nodejs.NodejsFunction(this, 'Handler', {
       runtime: lambda.Runtime.NODEJS_18_X,
-      entry: path.join(__dirname, '../lambda/index.ts'),
+      entry: path.join(__dirname, '../../service/handlers/hello-world.ts'),
       handler: 'handler',
       vpc: props.vpc,
       vpcSubnets: {
@@ -49,7 +49,7 @@ export class LambdaStack extends cdk.Stack {
 
     // Create API Gateway
     this.api = new apigateway.RestApi(this, 'Api', {
-      restApiName: 'ServiceApi',
+      restApiName: 'NYCBikeLaneSnitchAPI',
       defaultCorsPreflightOptions: {
         allowOrigins: apigateway.Cors.ALL_ORIGINS,
         allowMethods: apigateway.Cors.ALL_METHODS,
@@ -63,13 +63,17 @@ export class LambdaStack extends cdk.Stack {
     });
 
     // Create API resources and methods
-    const api = this.api.root.addResource('api');
+    const apiResource = this.api.root.addResource('api');
 
-    // Add GET method
-    api.addMethod('GET', new apigateway.LambdaIntegration(this.handler));
+    // Add GET method for /api
+    apiResource.addMethod('GET', new apigateway.LambdaIntegration(this.handler), {
+      operationName: 'GetHelloWorld'
+    });
 
-    // Add POST method
-    api.addMethod('POST', new apigateway.LambdaIntegration(this.handler));
+    // Add POST method for /api
+    apiResource.addMethod('POST', new apigateway.LambdaIntegration(this.handler), {
+      operationName: 'PostHelloWorld'
+    });
 
     // Output the API URL
     new cdk.CfnOutput(this, 'ApiUrl', {

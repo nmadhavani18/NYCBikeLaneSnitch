@@ -6,14 +6,14 @@ import { PROD_STAGE } from '../lib/constants';
 
 const app = new cdk.App();
 
-const vpcStack = new VpcStack(app, 'VPCStack', {
+const vpcStack = new VpcStack(app, 'NYCBikeLaneSnitchVPCStack', {
   env: {
     account: PROD_STAGE.DEPLOY_ACCOUNT,
     region: PROD_STAGE.DEPLOY_REGION,
   },
 });
 
-const lambdaStack = new LambdaStack(app, 'LambdaStack', {
+const lambdaStack = new LambdaStack(app, 'NYCBikeLaneSnitchLambdaStack', {
   vpc: vpcStack.vpc,
   env: {
     account: PROD_STAGE.DEPLOY_ACCOUNT,

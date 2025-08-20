@@ -10,6 +10,6 @@ export interface STAGE {
 
 export const PROD_STAGE = {
   DEPLOY_REGION: 'us-east-1',
-  DEPLOY_ACCOUNT: '221082198893',
+  DEPLOY_ACCOUNT: '635394567014',
   STAGE_NAME: STAGE_NAME.PROD,
 };
